@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <p>以下、Form </p>
+    <form action="/post/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+    <div id="content">
+       <ul>
+               {% for post in posts %}
+               <p>content: {{ post.content }}</p>
+               {% endfor %}
+       </ul>
+    </div>
+</body>
+</html>

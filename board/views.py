@@ -3,10 +3,16 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.template import loader, RequestContext
 from board.forms import PostForm, SignupForm, LoginForm
+
+
 # Create your views here.
 
 def  index(request):
-    return HttpResponse('Hello World')
+    form = PostForm
+    # template = loader.get_template('index.html')
+    if request.method == 'GET':
+        return render_to_response('index.html', {'form': form}, context_instance=RequestContext(request))
+    return render_to_response('index.html', {'form': form}, context_instance=RequestContext(request))
 
 def signup(request):
     user = User()
